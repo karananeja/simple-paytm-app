@@ -6,9 +6,9 @@ config();
 export const environment: EnvironmentTypes = {
   DB_PASSWORD: process.env.NODE_DB_PASSWORD,
   DB_USERNAME: process.env.NODE_DB_USERNAME,
-  DB_NAME: process.env.NODE_DB_NAME,
   APP_PORT: process.env.NODE_APP_PORT,
-  JWT_SECRET: process.env.NODE_JWT_SECRET,
+  JWT_SECRET: process.env.NODE_JWT_SECRET!,
+  SALT_ROUNDS: 10,
 };
 
 export const errMessages: ErrMessagesType = {
@@ -18,6 +18,10 @@ export const errMessages: ErrMessagesType = {
   },
   BAD_REQUEST: {
     err: 'BAD_REQUEST',
-    errMessage: 'Send all required fields: title, author, publishYear',
+    errMessage: 'Email already taken / Incorrect inputs',
+  },
+  LOGIN_ERROR: {
+    err: 'LOGIN_ERROR',
+    errMessage: 'Error while logging in',
   },
 };
