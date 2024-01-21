@@ -8,6 +8,7 @@ export const environment: EnvironmentTypes = {
   DB_USERNAME: process.env.NODE_DB_USERNAME,
   DB_NAME: process.env.NODE_DB_NAME,
   APP_PORT: process.env.NODE_APP_PORT,
+  JWT_SECRET: process.env.NODE_JWT_SECRET,
 };
 
 export const errMessages: ErrMessagesType = {

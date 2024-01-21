@@ -6,6 +6,7 @@ export type EnvironmentTypes = {
   DB_USERNAME?: string;
   DB_NAME?: string;
   APP_PORT?: string;
+  JWT_SECRET?: string;
 };
 
 type ErrType = { err: string; errMessage: string };
