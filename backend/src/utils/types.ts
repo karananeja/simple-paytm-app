@@ -40,3 +40,7 @@ export type UserType = {
   password: string;
   username: string;
 };
+
+export type JwtPayload = {
+  userId: string;
+};
