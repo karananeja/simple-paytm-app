@@ -27,8 +27,8 @@ app.get('*', (_: Request, res: Response) => res.status(404).send('Not found'));
 app.use(errorHandler);
 
 // Server started on the required port
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`[server]: The port is listening on ${port}`);
   // Connecting to the database
-  connectDB(mongoDbURI);
+  await connectDB(mongoDbURI);
 });
