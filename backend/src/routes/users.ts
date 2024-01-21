@@ -71,31 +71,40 @@ router.post(
 
     const username = req.body.username;
     const password = req.body.password;
-    const userFound = await User.findOne({ username, password });
 
-    if (userFound) {
-      const isPasswordCorrect = await bcrypt.compare(
-        password,
-        userFound.password
-      );
+    try {
+      const userFound = await User.findOne({ username, password });
 
-      if (isPasswordCorrect) {
-        const userToken = jwt.sign(
-          { userId: userFound._id },
-          environment.JWT_SECRET
+      if (userFound) {
+        const isPasswordCorrect = await bcrypt.compare(
+          password,
+          userFound.password
         );
 
-        responseStructure({
-          res,
-          data: {
-            msg: 'User created successfully',
-            info: { token: userToken },
-          },
-        });
-      }
-    }
+        if (isPasswordCorrect) {
+          const userToken = jwt.sign(
+            { userId: userFound._id },
+            environment.JWT_SECRET
+          );
 
-    responseStructure({ res, statusCode: 411, data: errMessages.LOGIN_ERROR });
+          responseStructure({
+            res,
+            data: {
+              msg: 'User created successfully',
+              info: { token: userToken },
+            },
+          });
+        }
+      }
+
+      responseStructure({
+        res,
+        statusCode: 411,
+        data: errMessages.LOGIN_ERROR,
+      });
+    } catch (err) {
+      next(err);
+    }
   }
 );
 
