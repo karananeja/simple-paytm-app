@@ -24,4 +24,12 @@ export const errMessages: ErrMessagesType = {
     err: 'LOGIN_ERROR',
     errMessage: 'Error while logging in',
   },
+  UPDATE_ERROR: {
+    err: 'UPDATE_ERROR',
+    errMessage: 'Error while updating information',
+  },
+  INVALID_TOKEN: {
+    err: 'INVALID_TOKEN',
+    errMessage: `There's an issue with the token provided`,
+  },
 };

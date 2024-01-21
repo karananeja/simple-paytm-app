@@ -14,9 +14,7 @@ export const isEmailUnique = async (
   const username = req.body.username;
   const existingUser = await User.findOne({ username });
 
-  if (existingUser) {
-    return responseStructure({ res, statusCode: 411, data });
-  }
+  if (existingUser) return responseStructure({ res, statusCode: 411, data });
 
   next();
 };
