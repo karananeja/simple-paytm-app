@@ -31,3 +31,10 @@ export type ResponseStructureType = {
 export type ErrMessagesType = {
   [x: string]: { err: string; errMessage: string };
 };
+
+export type UserType = {
+  firstName: string;
+  lastName: string;
+  password: string;
+  username: string;
+};
